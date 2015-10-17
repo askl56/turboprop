@@ -20,6 +20,7 @@ group :development, :test do
   gem 'guard-rails', require: false
   gem 'guard-rspec', require: false
   gem 'rb-fsevent' if `uname` =~ /Darwin/
+  gem 'better_errors'
 end
 
 group :development do
