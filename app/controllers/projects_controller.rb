@@ -12,6 +12,10 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
 
+  def show
+    @project = Project.find(params[:id])
+  end
+
 
   def update
     @project = Project.find(params[:id])
@@ -35,8 +39,11 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def show
+  def destroy
     @project = Project.find(params[:id])
+    @project.destroy
+    flash[:notice] = "Project has been deleted."
+    redirect_to projects_path
   end
 
   private
