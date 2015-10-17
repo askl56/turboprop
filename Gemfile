@@ -13,6 +13,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   gem 'byebug'
   gem "rspec-rails", "~> 3.2.1"
+  gem 'spring-commands-rspec'
+  gem 'guard-rails', require: false
+  gem 'guard-rspec', require: false
+  gem 'rb-fsevent' if `uname` =~ /Darwin/
 end
 
 group :development do
@@ -20,8 +24,6 @@ group :development do
   gem 'spring'
   gem 'pry'
   gem 'pry-rails'
-  gem 'guard-rails', require: false
-  gem 'guard-rspec', require: false
 end
 
 group :test do
