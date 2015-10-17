@@ -1,7 +1,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
-@import "projects"
+@import "projects";
+@import "responsive";
 
 .page-header {
   position: relative;
@@ -70,4 +71,12 @@ header {
 
 .alert-alert {
   @extend .alert-danger;
+}
+
+form {
+  max-width: 500px;
+}
+
+body {
+  padding-top: 70px;
 }
