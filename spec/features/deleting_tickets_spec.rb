@@ -8,6 +8,7 @@ RSpec.feature "Users can delete tickets" do
   before do
     visit project_ticket_path(project, ticket)
   end
+
   scenario "successfully" do
     click_link "Delete Ticket"
     expect(page).to have_content "Ticket has been deleted."
