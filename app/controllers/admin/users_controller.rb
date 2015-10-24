@@ -47,6 +47,7 @@ class Admin::UsersController < Admin::ApplicationController
       @user.archive
       flash[:notice] = "User has been archived."
     end
+
     redirect_to admin_users_path
   end
 
