@@ -6,7 +6,9 @@
 
   <ul class="actions">
     <li>
+      <% if policy(@project).update? %>
       <%= link_to "Edit Project", edit_project_path(@project), class: "edit" %>
+      <% end %>
     </li>
     <% admins_only do %>
     <li>
