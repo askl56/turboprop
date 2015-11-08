@@ -18,11 +18,20 @@ Rails.application.routes.draw do
   root "projects#index"
 
   resources :projects, only: [:index, :show, :edit, :update] do
-    resources :tickets
+    resources :tickets do
+      collection do
+        get :search
+      end
+    end
   end
 
   resources :tickets, only: [] do
     resources :comments, only: [:create]
+    resources :tags, only: [] do
+      member do
+        delete :remove
+      end
+    end
   end
 
   resources :attachments, only: [:show, :new]

@@ -23,7 +23,13 @@
       <td><%= render @ticket.state %></td>
     </tr>
     <% end %>
-  </table>
+    <% if @ticket.tags.any? %>
+    <tr id="tags">
+      <th>Tags:</th>
+      <td><%= render @ticket.tags, ticket: @ticket %></td>
+    </tr>
+  <% end %>
+</table>
 
   <%= simple_format(@ticket.description) %>
   <% if @ticket.attachments.any? %>
