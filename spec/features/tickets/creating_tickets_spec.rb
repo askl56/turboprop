@@ -42,4 +42,15 @@ RSpec.feature "Users can create new tickets" do
       expect(page).to have_content "Author: #{user.email}"
     end
   end
+
+  scenario "with an attachment" do
+    fill_in "Name", with: "Add documentation for blink tag"
+    fill_in "Description", with: "The blink tag has a speed attribute"
+    attach_file "File", "spec/fixtures/speed.txt"
+    click_button "Create Ticket"
+    expect(page).to have_content "Ticket has been created."
+    within("#ticket .attachment") do
+      expect(page).to have_content "speed.txt"
+    end
+  end
 end

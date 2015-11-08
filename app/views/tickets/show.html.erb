@@ -19,7 +19,20 @@
      </tr>
    </table>
 
-   <ul class="actions">
+   <%= simple_format(@ticket.description) %>
+   <% if @ticket.attachment.present? %>
+   <h4>Attachment
+   </h4>
+   <div class="attachment">
+    <p>
+      <%= link_to File.basename(@ticket.attachment.url),
+      @ticket.attachment.url %>
+      (<%= number_to_human_size(@ticket.attachment.size) %>)
+    </p>
+  </div>
+  <% end %>
+
+  <ul class="actions">
     <% if policy(@ticket).update? %>
     <li><%= link_to "Edit Ticket", [:edit, @project, @ticket],
       class: "edit" %></li>
