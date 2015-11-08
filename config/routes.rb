@@ -7,10 +7,17 @@ Rails.application.routes.draw do
         get :make_default
       end
     end
+
     resources :users do
       member do
         patch :archive
       end
+    end
+  end
+
+  namespace :api do
+    resources :projects, only: [] do
+      resources :tickets
     end
   end
 
