@@ -4,4 +4,4 @@
 /log/*
 !/log/.keep
 /tmp
-public/uploads
+uploads
