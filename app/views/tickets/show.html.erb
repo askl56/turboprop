@@ -9,12 +9,14 @@
     <table id="attributes">
      <tr>
        <th>Author:</th>
-       <td><%= @ticket.author.email %>
+       <td>
+         <%= @ticket.author.email %>
        </td>
      </tr>
      <tr>
        <th>Created:</th>
-       <td><%= time_ago_in_words(@ticket.created_at) %> ago
+       <td>
+         <%= time_ago_in_words(@ticket.created_at) %> ago
        </td>
      </tr>
      <% if @ticket.state.present? %>
@@ -28,8 +30,15 @@
       <th>Tags:</th>
       <td><%= render @ticket.tags, ticket: @ticket %></td>
     </tr>
-  <% end %>
-</table>
+    <% end %>
+    <tr id="watchers">
+      <th>Watchers:</th>
+      <td>
+        <%= toggle_watching_button(@ticket) %><br />
+        <%= @ticket.watchers.map(&:email).to_sentence %>
+      </td>
+    </tr>
+  </table>
 
   <%= simple_format(@ticket.description) %>
   <% if @ticket.attachments.any? %>
