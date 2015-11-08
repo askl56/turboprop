@@ -14,12 +14,12 @@
  tr:first-child {
    td, th {
     border-top: 0px;
-    }
   }
+}
 
-  td, th {
-    line-height: 24px !important;
-  }
+td, th {
+  line-height: 24px !important;
+}
 }
 
 blockquote.comment p {
@@ -34,4 +34,19 @@ blockquote.comment p {
 
 #tickets li {
   padding-bottom: 10px;
+}
+
+.tag {
+  @extend .state;
+  @extend .label-info;
+  margin-right: 10px;
+  a {
+    color: white;
+    &.remove {
+      font-family: "FontAwesome";
+      @extend .fa-close;
+      margin-right: 0.5em;
+      text-decoration: none;
+    }
+  }
 }
