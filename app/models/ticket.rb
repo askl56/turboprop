@@ -14,6 +14,10 @@ class Ticket < ActiveRecord::Base
 
   before_create :assign_default_state
 
+  searcher do
+    label :tag, from: :tags, field: "name"
+  end
+
   attr_accessor :tag_names
 
   def tag_names=(names)
