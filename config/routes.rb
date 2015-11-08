@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root "application#index"
     resources :projects, only: [:new, :create, :destroy]
+    resources :states, only: [:index, :new, :create]
     resources :users do
       member do
         patch :archive
