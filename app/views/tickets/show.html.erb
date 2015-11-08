@@ -17,12 +17,18 @@
        <td><%= time_ago_in_words(@ticket.created_at) %> ago
        </td>
      </tr>
-   </table>
+     <% if @ticket.state.present? %>
+     <tr>
+      <th>State:</th>
+      <td><%= render @ticket.state %></td>
+    </tr>
+    <% end %>
+  </table>
 
-   <%= simple_format(@ticket.description) %>
-   <% if @ticket.attachments.any? %>
-   <h4>Attachments</h4>
-   <div class="attachments">
+  <%= simple_format(@ticket.description) %>
+  <% if @ticket.attachments.any? %>
+  <h4>Attachments</h4>
+  <div class="attachments">
     <% @ticket.attachments.each do |attachment| %>
     <p>
       <%= link_to File.basename(attachment.file.url),
@@ -61,7 +67,7 @@
   </div>
 
   <% if policy(@comment).create? %>
-    <%= render "comments/form", ticket: @ticket, comment: @comment %>
+  <%= render "comments/form", ticket: @ticket, comment: @comment %>
   <% end %>
 
 
