@@ -15,6 +15,7 @@ gem "devise", "~> 3.4.1"
 gem "pundit", "~> 0.3.0"
 gem "carrierwave"
 gem "searcher", github: "radar/searcher"
+gem "active_model_serializers"
 
 group :development, :test do
   gem 'byebug'
