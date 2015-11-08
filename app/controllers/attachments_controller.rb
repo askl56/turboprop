@@ -1,4 +1,12 @@
 class AttachmentsController < ApplicationController
+  skip_after_action :verify_authorized, only: [:new]
+
+  def new
+    @index = params[:index].to_i
+    @ticket = Ticket.new
+    @ticket.attachments.build
+    render layout: false
+  end
 
   def show
     attachment = Attachment.find(params[:id])
