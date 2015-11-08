@@ -9,6 +9,7 @@ RSpec.feature "Users can only see the appropriate links" do
   end
 
   context "anonymous users" do
+
     scenario "cannot see the New Project link" do
       visit "/"
       expect(page).not_to have_link "New Project"
@@ -22,6 +23,7 @@ RSpec.feature "Users can only see the appropriate links" do
 
 
   context "non-admin users (project viewers)" do
+
     before do
       login_as(user)
       assign_role!(user, :viewer, project)
@@ -55,6 +57,11 @@ RSpec.feature "Users can only see the appropriate links" do
     scenario "cannot see the Delete Ticket link" do
       visit project_ticket_path(project, ticket)
       expect(page).not_to have_link "Delete Ticket"
+    end
+
+    scenario "cannot see the New Comment form" do
+      visit project_ticket_path(project, ticket)
+      expect(page).not_to have_heading "New Comment"
     end
   end
 
@@ -90,6 +97,11 @@ RSpec.feature "Users can only see the appropriate links" do
     scenario "can see the Delete Ticket link" do
       visit project_ticket_path(project, ticket)
       expect(page).to have_link "Delete Ticket"
+    end
+
+    scenario "can see the New Comment form" do
+      visit project_ticket_path(project, ticket)
+      expect(page).to have_heading "New Comment"
     end
   end
 end
