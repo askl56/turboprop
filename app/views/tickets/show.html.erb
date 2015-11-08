@@ -17,12 +17,18 @@
        <td><%= time_ago_in_words(@ticket.created_at) %> ago
        </td>
      </tr>
-   </table>
+     <% if @ticket.state.present? %>
+     <tr>
+      <th>State:</th>
+      <td><%= render @ticket.state %></td>
+    </tr>
+    <% end %>
+  </table>
 
-   <%= simple_format(@ticket.description) %>
-   <% if @ticket.attachments.any? %>
-   <h4>Attachments</h4>
-   <div class="attachments">
+  <%= simple_format(@ticket.description) %>
+  <% if @ticket.attachments.any? %>
+  <h4>Attachments</h4>
+  <div class="attachments">
     <% @ticket.attachments.each do |attachment| %>
     <p>
       <%= link_to File.basename(attachment.file.url),
@@ -48,3 +54,20 @@
     </header>
     <%= simple_format(@ticket.description) %>
   </div>
+
+  <header>
+    <h3>Comments</h3>
+  </header>
+  <div id="comments">
+    <% if @ticket.comments.persisted.any? %>
+    <%= render @ticket.comments.persisted %>
+    <% else %>
+    <p>There are no comments for this ticket.</p>
+    <% end %>
+  </div>
+
+  <% if policy(@comment).create? %>
+  <%= render "comments/form", ticket: @ticket, comment: @comment %>
+  <% end %>
+
+

@@ -35,8 +35,9 @@
 <ul id="tickets">
   <% @project.tickets.each do |ticket| %>
   <li>
-    #<%= ticket.id %> -
+  #<%= ticket.id %> -
     <%= link_to ticket.name, [@project, ticket] %>
+    <%= render ticket.state if ticket.state %>
   </li>
   <% end %>
 </ul>
