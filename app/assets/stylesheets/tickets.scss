@@ -8,18 +8,18 @@
   width: 65%;
 
   th {
-   width: 35%;
- }
-
- tr:first-child {
-   td, th {
-    border-top: 0px;
+    width: 35%;
   }
-}
 
-td, th {
-  line-height: 24px !important;
-}
+  tr:first-child {
+    td, th {
+      border-top: 0px;
+    }
+  }
+
+  td, th {
+    line-height: 24px !important;
+  }
 }
 
 blockquote.comment p {
@@ -32,7 +32,7 @@ blockquote.comment p {
   padding: 0.3em 0.6em;
 }
 
-#tickets li {
+#tickets li, #states li {
   padding-bottom: 10px;
 }
 
@@ -40,8 +40,10 @@ blockquote.comment p {
   @extend .state;
   @extend .label-info;
   margin-right: 10px;
+
   a {
     color: white;
+
     &.remove {
       font-family: "FontAwesome";
       @extend .fa-close;
@@ -50,3 +52,31 @@ blockquote.comment p {
     }
   }
 }
+
+.watch, .unwatch {
+  @extend .btn;
+  @extend .btn-xs;
+  font-weight: bold;
+
+  &:before {
+    font-family: "FontAwesome";
+    padding-right: 0.5em;
+  }
+}
+
+.watch {
+  @extend .btn-success;
+
+  &:before {
+    @extend .fa-eye;
+  }
+}
+
+.unwatch {
+  @extend .btn-danger;
+
+  &:before {
+    @extend .fa-eye-slash;
+  }
+}
+
