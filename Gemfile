@@ -16,6 +16,8 @@ gem "pundit", "~> 0.3.0"
 gem "carrierwave"
 gem "searcher", github: "radar/searcher"
 gem "active_model_serializers"
+gem 'regressor', git: 'https://github.com/ndea/regressor.git', branch: 'master'
+gem 'shoulda-matchers', require: false
 
 group :development, :test do
   gem 'byebug'
@@ -41,4 +43,5 @@ group :test do
   gem 'selenium-webdriver'
   gem 'database_cleaner'
   gem 'email_spec'
+  gem 'faker'
 end
